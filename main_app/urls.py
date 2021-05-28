@@ -12,4 +12,5 @@ urlpatterns = [
     path('coins/<int:coin_id>/historical_data/', views.coins_add_historical_data, name='coins_add_historical_data'),
     path('coins/<int:coin_id>/exchange/<int:exchange_id>/add/', views.add_exchange, name='add_exchange'),
     path('coins/<int:coin_id>/exchange/<int:exchange_id>/remove/', views.remove_exchange, name='remove_exchange'),
+    path('accounts/signup/', views.signup, name='signup'),
 ]

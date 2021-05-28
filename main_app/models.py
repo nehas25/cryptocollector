@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -17,6 +18,7 @@ class CryptoCurrency(models.Model):
     current_price_usd = models.DecimalField(max_digits=20, decimal_places=10)
     market_cap_usd = models.CharField(max_length=50)
     exchanges = models.ManyToManyField(Exchange, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.name} ({self.ticker_symbol})'

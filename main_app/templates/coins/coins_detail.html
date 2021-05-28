@@ -59,6 +59,8 @@
                         <div class="card">
                             <div class="card-content">
                                 <span class="card-title"><a href="http://{{ exchange.website }}">{{ exchange.name }}</a></span>
+                            </div>
+                            <div class="card-action">
                                 <form action="{% url 'remove_exchange' coin.id exchange.id %}" method="POST">
                                     {% csrf_token %}
                                     <button class="btn" type="submit">Remove</button>
@@ -77,6 +79,8 @@
                         <div class="card">
                             <div class="card-content">
                                 <span class="card-title"><a href="http://{{ exchange.website }}">{{ exchange.name }}</a></span>
+                            </div>
+                            <div class="card-action">
                                 <form action="{% url 'add_exchange' coin.id exchange.id %}" method="POST">
                                     {% csrf_token %}
                                     <button class="btn" type="submit">Add</button>
