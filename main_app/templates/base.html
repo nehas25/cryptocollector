@@ -12,15 +12,17 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <!-- Materialize JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    {% comment %} <link
+    <!--  <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    /> {% endcomment %}
-    <!-- jQuery {% endcomment -->
+    /> -->
+    <!-- jQuery  -->
     <script
     src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
     crossorigin="anonymous"></script>
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap" rel="stylesheet">
@@ -33,7 +35,12 @@
         <div class="nav-wrapper">
           <ul>
             <li>
-              <a href="/" class="left brand-logo">&nbsp;&nbsp;CryptoCollector</a>
+                <a href="/" class="left brand-logo">
+                <span id="crypto-logo">
+                    <img class="coin-logo-img" src="{% static 'images/CryptoLogo.png' %}" alt=""/>
+                </span>
+                  CryptoCollector
+                </a>
             </li>
           </ul>
           <ul class="right">
@@ -58,6 +65,7 @@
     </main>
 
     <footer class="page-footer">
+      <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
       <div class="right">
         All Rights Reserved, &copy; 2021 Crypto Collector &nbsp;
       </div>

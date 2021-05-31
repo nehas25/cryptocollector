@@ -2,15 +2,13 @@
 
 {% block content %}
     <h1>Coins List</h1>
-    {% for coin in coins %}
-        <a href="{% url 'coins_detail' coin.id %}">
-            <div class="card">
-                <div class="card-content">
-                    <span class="card-title">{{ coin.name }} ({{ coin.ticker_symbol }})</span>
-                    <p>Current price (USD): {{ coin.current_price_usd}}</p>
-                    <p>Market Cap (USD): {{ coin.market_cap_usd}}</p>
-                </div>
-            </div>
-        </a>
-    {% endfor %}
+    <div id="search-bar-container">
+        <i id="search-icon" class="fas fa-search fa-2x"></i>
+            <input type="text" name="search-coins" id="user-input" placeholder="Search by ticker symbol">
+        
+    </div>
+
+    <div id="replaceable-content">
+        {% include 'coins/coins_results_partial.html' %}
+    </div>
 {% endblock %}

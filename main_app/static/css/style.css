@@ -34,3 +34,63 @@ nav ul a, nav .brand-logo {
     background-color: #6eeeb9;
     color: #000;
 }
+
+#logo-container {
+    color: black;
+}
+
+#crypto-logo img{
+    width: 45px;
+    height: 45px;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+#searchbar-coins {
+    width: 25%;
+    /* border: 1px solid #9e9e9e; */
+}
+
+.fas.fa-search {
+    margin-right: 10px;
+    padding-top: 10px;
+}
+
+@keyframes blinker {
+    from {opacity: 1.0;}
+    to {opacity: 0.0;}
+}
+  
+.blink {
+    text-decoration: blink;
+    animation-name: blinker;
+    animation-duration: 0.6s;
+    animation-iteration-count:infinite;
+    animation-timing-function:ease-in-out;
+    animation-direction: alternate;
+}
+
+#search-bar-container {
+    position:relative;
+    /* padding:0 0 0 20px;
+    margin:0 20px; 
+    background:#ddd; 
+    direction: rtl;
+    /* width: 200px; */
+}
+
+#user-input {
+    /* height:20px; */
+    /* margin:0; */
+    margin-left: 45px;
+    padding-right: 30px;
+    width: 90%;
+}
+#search-icon {
+    position:absolute;
+    color: gray;
+    /* bottom:2px;
+    right:5px;
+    width:24px;
+    height:24px; */
+}

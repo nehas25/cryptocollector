@@ -1,0 +1,15 @@
+{% if coins %}
+    {% for coin in coins %}
+        <a href="{% url 'coins_detail' coin.id %}">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">{{ coin.name }} ({{ coin.ticker_symbol }})</span>
+                    <p>Current price (USD): {{ coin.current_price_usd}}</p>
+                    <p>Market Cap (USD): {{ coin.market_cap_usd}}</p>
+                </div>
+            </div>
+        </a>
+    {% endfor %}
+{% else %}
+    <p>No results found</p>
+{% endif %}

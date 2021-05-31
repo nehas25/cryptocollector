@@ -4,6 +4,8 @@ from .forms import CryptoCurrencyForm, HistoricalDataForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from django.template.loader import render_to_string
+from django.http import JsonResponse
 
 # Create your views here.
 def home(request):
@@ -12,12 +14,34 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
+# @login_required
+# def index(request):
+#     all_coins = CryptoCurrency.objects.filter(user=request.user)
+#     context = {
+#         'coins': all_coins
+#     }
+#     return render(request, 'coins/coins_index.html', context)
+
 @login_required
 def index(request):
-    all_coins = CryptoCurrency.objects.filter(user=request.user)
+    url_parameter = request.GET.get("q")
+    if url_parameter:
+        matching_coins = CryptoCurrency.objects.filter(user=request.user, ticker_symbol__icontains=url_parameter)
+    else:
+        matching_coins = CryptoCurrency.objects.filter(user=request.user)
+        
     context = {
-        'coins': all_coins
+        'coins': matching_coins
     }
+    if request.is_ajax():
+        html = render_to_string(
+            template_name = "coins/coins_results_partial.html", 
+            context={'coins': matching_coins}
+        )
+        data_dict = {
+            "html_from_view": html
+        }
+        return JsonResponse(data=data_dict, safe=False)
     return render(request, 'coins/coins_index.html', context)
 
 @login_required
