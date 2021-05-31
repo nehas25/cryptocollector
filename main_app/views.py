@@ -6,6 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.template.loader import render_to_string
 from django.http import JsonResponse
+from django.db.models import Q
 
 # Create your views here.
 def home(request):
@@ -14,19 +15,15 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
-# @login_required
-# def index(request):
-#     all_coins = CryptoCurrency.objects.filter(user=request.user)
-#     context = {
-#         'coins': all_coins
-#     }
-#     return render(request, 'coins/coins_index.html', context)
 
 @login_required
 def index(request):
     url_parameter = request.GET.get("q")
     if url_parameter:
-        matching_coins = CryptoCurrency.objects.filter(user=request.user, ticker_symbol__icontains=url_parameter)
+        matching_coins = CryptoCurrency.objects.filter(
+            Q(user=request.user), 
+            Q(ticker_symbol__icontains=url_parameter) | Q(name__icontains=url_parameter)
+        )
     else:
         matching_coins = CryptoCurrency.objects.filter(user=request.user)
         
