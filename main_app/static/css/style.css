@@ -1,7 +1,12 @@
+html {
+    font-family: 'Merriweather', serif;
+}
+
 body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    font-family: 'Merriweather', serif;
 }
 
 main {
@@ -17,10 +22,15 @@ footer {
     font-weight: bold;
 }
 
-/* .nav-wrapper {
-    background-color: cadetblue;
+.nav-wrapper {
+    background-color: #6eeeb9;
 }
 
-footer {
-    background-color: cadetblue;
-} */
+nav ul a, nav .brand-logo {
+    color: #000;
+}
+
+.page-footer {
+    background-color: #6eeeb9;
+    color: #000;
+}

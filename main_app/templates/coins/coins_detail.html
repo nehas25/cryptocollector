@@ -31,7 +31,7 @@
             {% if coin.historicaldata_set.count %}
                 <table class="striped">
                     <thead>
-                        <tr><th>Date</th><th>Open</th><th>Close</th></tr>
+                        <tr><th>Date</th><th>Open</th><th>Close</th><th>Delete</th></tr>
                     </thead>
                     <tbody>
                         {% for data in coin.historicaldata_set.all %}
@@ -39,6 +39,10 @@
                                 <td>{{ data.date }}</td>
                                 <td>{{ data.open }}</td>
                                 <td>{{ data.close }}</td>
+                                <td><form action="{% url 'delete_historical_data' data.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn" type="submit">Delete</button>
+                                </form></td>
                             </tr>
                         {% endfor %}
                     </tbody>

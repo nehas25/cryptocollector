@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import CryptoCurrency, Exchange
+from .models import CryptoCurrency, Exchange, HistoricalData
 from .forms import CryptoCurrencyForm, HistoricalDataForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -107,3 +107,10 @@ def signup(request):
         'error_message': error_message
     }
     return render(request, 'registration/signup.html', context)
+
+@login_required
+def delete_historical_data(request, data_id):
+    data = HistoricalData.objects.get(id=data_id)
+    coin_id = data.cryptocurrency_id
+    HistoricalData.objects.get(id=data_id).delete()
+    return redirect('coins_detail', coin_id)
