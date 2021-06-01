@@ -16,3 +16,4 @@ Users can create an account, create and store coin information such as name, tic
 - jQuery
 - AJAX
 - Javascript
+- Postgres
